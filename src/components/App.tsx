@@ -1,5 +1,5 @@
 import * as React from "react";
-import {TopNavBar, ITopNavBar} from "./TopNavBar";
+import {ITopNavBar, TopNavBar} from "./TopNavBar";
 import {NeuralStyleTransfer} from "./NeuralStyleTransfer";
 import {FutureStuff} from "./FutureStuff";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
