@@ -10,3 +10,12 @@
 - React Resources:
     - [w3schools](https://www.w3schools.com/react/react_es6.asp)
     - [react official tutorial](https://reactjs.org/tutorial/tutorial.html)
+    
+    
+#### Upgrade Dependencies
+    - npx npm-check-updates -u
+    - npm install
+
+
+#### Starting the server
+    - npm run start

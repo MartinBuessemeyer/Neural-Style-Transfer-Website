@@ -1,8 +1,61 @@
-$background-grey: #1111bb;
+// colors
+$page-background-color: #545864;
 
+$topnav-background-color: #2f343f;
+$topnavitem-text-color: #f2f2f2;
+$topnavitem-background-hover-color: #303030;
+$topnavitem-text-hover-color: #d0d0d0;
+$topnavitem-background-active-color: #1d4971;
+$topnavitem-text-active-color: #d0d0d0;
+
+// basic styling
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.3rem;
-  background-color: $background-grey;
+  background-color: $page-background-color;
+}
+
+// Style the top navbar
+.topnav {
+  background-color: $topnav-background-color;
+  overflow: hidden;
+}
+
+// Style the items of the top navbar
+.topnav a {
+  float: left;
+  display: block;
+  color: $topnavitem-text-color;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-right: 2px solid $topnavitem-text-color;
+}
+
+.topnav a:last-child {
+  border-right: none;
+}
+
+// Change background color of top navbar item on hovering
+.topnav a:hover {
+  background-color: $topnavitem-text-hover-color;
+  color: $topnavitem-background-hover-color;
+}
+
+// Highlight active top navbar item
+.topnav a.active {
+  background-color: $topnavitem-background-active-color;
+  color: $topnavitem-text-active-color;
+}
+
+// Hide the link that should open and close the topnav on small screens.
+.topnav .icon {
+  display: none;
+}
+
+// Center main content
+.main-content {
+  text-align: center;
 }
