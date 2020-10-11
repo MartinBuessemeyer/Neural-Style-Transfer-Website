@@ -13,9 +13,17 @@
     
     
 #### Upgrade Dependencies
+Minor
+    
+    - npm update --save/--save-dev
+Major
+
     - npx npm-check-updates -u
     - npm install
 
 
 #### Starting the server
     - npm run start
+    
+#### Linting
+    - npx eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0

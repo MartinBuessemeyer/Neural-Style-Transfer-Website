@@ -2,7 +2,7 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 
 export class TopNavBar extends React.Component<ITopNavBar, ITopNavBar> {
-    render() {
+    render(): React.ReactNode {
         return <div className="topnav">
             {this.props.items.map((item: ITopNavBarItem, index: number) =>
                 <TopNavBarItem key={index} tabName={item.tabName} tabLink={item.tabLink}
@@ -23,6 +23,6 @@ export interface ITopNavBar {
     activeItemIndex: number;
 }
 
-function TopNavBarItem(props: ITopNavBarItem) {
+function TopNavBarItem(props: ITopNavBarItem): React.ReactElement {
     return <Link to={`/${props.tabLink}`} className={props.active ? "active" : ""}>{props.tabName}</Link>
 }
