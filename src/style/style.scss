@@ -2,7 +2,7 @@
 $page-background-color: #545864;
 
 $topnav-background-color: #2f343f;
-$topnavitem-text-color: #f2f2f2;
+$text-color: #f2f2f2;
 $topnavitem-background-hover-color: #303030;
 $topnavitem-text-hover-color: #d0d0d0;
 $topnavitem-background-active-color: #1d4971;
@@ -14,6 +14,7 @@ body {
   font-size: 14px;
   line-height: 1.3rem;
   background-color: $page-background-color;
+  color: $text-color;
 }
 
 // Style the top navbar
@@ -26,12 +27,12 @@ body {
 .topnav a {
   float: left;
   display: block;
-  color: $topnavitem-text-color;
+  color: $text-color;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  border-right: 2px solid $topnavitem-text-color;
+  border-right: 2px solid $text-color;
 }
 
 .topnav a:last-child {
