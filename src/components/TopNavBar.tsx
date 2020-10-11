@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export class TopNavBar extends React.Component<ITopNavBar, ITopNavBar> {
     render() {
         return <div className="topnav">
             {this.props.items.map((item: ITopNavBarItem, index: number) =>
-                <TopNavBarItem key={index} tabName={item.tabName} tabLink={item.tabLink} active={this.props.activeItemIndex == index} />
+                <TopNavBarItem key={index} tabName={item.tabName} tabLink={item.tabLink}
+                               active={this.props.activeItemIndex == index}/>
             )}
         </div>
     }

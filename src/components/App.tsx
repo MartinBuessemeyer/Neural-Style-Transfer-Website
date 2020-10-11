@@ -32,8 +32,7 @@ export class App extends React.Component<IProps, IProps> {
                            render={() => {
                                return (<React.Fragment>
                                    <TopNavBar items={topNavBarItems.items} activeItemIndex={-1}/>
-                                   <div className="main-content">
-                                   </div>
+                                   <div className="main-content"/>
                                </React.Fragment>);
                            }}/>
                     <Route path={`/${NEURAL_STYLE_TRANSFER_LINK}`}
@@ -54,10 +53,9 @@ export class App extends React.Component<IProps, IProps> {
                                    </div>
                                </React.Fragment>);
                            }}/>
-            </Switch>
-    </Router>
-    )
-        ;
+                </Switch>
+            </Router>
+        );
     }
 }
 
