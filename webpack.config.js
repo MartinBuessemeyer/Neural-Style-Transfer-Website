@@ -68,5 +68,9 @@ module.exports = {
     devtool: "source-map",
     resolve: {
         extensions: [".js", ".ts", ".tsx", ".scss"]
+    },
+    devServer: {
+        compress: true,
+        historyApiFallback: true,
     }
 }
