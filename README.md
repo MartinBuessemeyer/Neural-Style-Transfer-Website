@@ -1,5 +1,8 @@
 # Learning-Website
-
+This is a basic website of mine where I can try out stuff. 
+For now, I want to add Deep Learning Stuff by using [tensorflow.js](https://www.tensorflow.org/js). 
+With this I can run Deep Learning on the client side. Thus, I could easily host it a raspberry pi.
+I am currently working on [Neural Style Transfer](https://en.wikipedia.org/wiki/Neural_Style_Transfer#cite_note-5).
 # Used Knowledge Resources
 
 #### Setup
