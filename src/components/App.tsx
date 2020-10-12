@@ -24,7 +24,7 @@ export class App extends React.Component<IProps, IProps> {
         this.state = {name: props.name};
     }
 
-    render() {
+    render(): React.ReactNode {
         return (
             <Router>
                 <Switch>
