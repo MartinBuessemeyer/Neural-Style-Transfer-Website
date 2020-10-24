@@ -128,7 +128,7 @@ const styleImage = async (form: NeuralStyleTransferForm) => {
     const outputImage = tf.variable(contentImage, true);
 
     //const optimizer = tf.train.adam(0.02, 0.99, 0.1);
-    const optimizer = tf.train.adam(0.1, 0.99, 0.1);
+    const optimizer = tf.train.adam(0.5);
 
     const epochs = 1000;
     const stepPerEpoch = 10;
@@ -140,14 +140,12 @@ const styleImage = async (form: NeuralStyleTransferForm) => {
                     const loss = styleContentLoss(outputs, targets);
                     console.log(`Epoch: ${epoch}, Loss: ${loss.dataSync()}`);
                     return loss.asScalar();
-                });
+                }, true, [outputImage]);
             });
             // Optional: Enable in order to not fry your hardware.
-            await sleep(20);
+            await sleep(80);
         }
-        const postprocessedOutput = tf.tidy(() => {
-            return tf.clipByValue(postprocessInput(outputImage).toInt(), 0, 255);
-        });
+        const postprocessedOutput = postprocessInput(outputImage);
         const canvas = document.getElementById("output") as HTMLCanvasElement;
         await tf.browser.toPixels(postprocessedOutput, canvas);
         postprocessedOutput.dispose();
@@ -167,15 +165,13 @@ function styleContentLoss(outputs: StyleAndContentOutput, targets: StyleAndConte
     const styleMeans: tf.Tensor[] = [];
     for (let [name, val] of styleOutputs) {
         // TODO tf.squaredDifference()
-        const styleDiff = val.sub(targets.style.get(name) as tf.Tensor2D);
-        styleMeans.push(tf.mean(styleDiff.mul(styleDiff)));
+        styleMeans.push(val.sub(targets.style.get(name) as tf.Tensor2D).square().mean());
     }
     const styleLoss = tf.addN(styleMeans).mul(styleWeight / styleMeans.length);
 
     const contentMeans: tf.Tensor[] = [];
     for (let [name, val] of contentOutputs) {
-        const contentDiff = val.sub(targets.content.get(name) as tf.Tensor4D);
-        contentMeans.push(tf.mean(contentDiff.mul(contentDiff)));
+        contentMeans.push(val.sub(targets.content.get(name) as tf.Tensor4D).square().mean());
     }
     const contentLoss = tf.addN(contentMeans).mul(contentWeight / contentMeans.length);
     return styleLoss.add(contentLoss);
@@ -231,7 +227,7 @@ function preprocessInput(inputs: tf.Tensor3D): tf.Tensor4D {
 function postprocessInput(input: tf.Tensor4D): tf.Tensor3D {
     return tf.tidy(() => {
         const meanImageNetRGB = [123.68, 116.779, 103.939];
-        return input.squeeze().reverse(2).add(meanImageNetRGB);
+        return tf.clipByValue(input.squeeze([0]).reverse(2).add(meanImageNetRGB).toInt(), 0, 255) as tf.Tensor3D;
     });
 }
 
